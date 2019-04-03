@@ -2,17 +2,17 @@ const player = {
 
     hitPoints: 100,
     damagePoint: 5,
-    damageTaken: 0,
+    lastDamageTaken: 0,
     level: 1,
-
+    attackDamage: 0,
     isAlive: true,
 
 
- fight: function (monster) {
+ fight: function (enemy) {
     
-        const damageTaken = enemy.calculateAttackDamage();
-        this.damageTaken = Math.max(damageTaken - this.level, 1);
-        this.hitPoints = this.hitPoints - this.damageTaken;
+        const lastDamageTaken = enemy.calculateAttackDamage();
+        this.lastDamageTaken = Math.max(lastDamageTaken - this.level, 1);
+        this.hitPoints = this.hitPoints - this.lastDamageTaken;
         
         if (this.hitPoints <= 0) {
             this.isAlive = false;
@@ -31,8 +31,4 @@ calculateAttackDamage : function () {
         }
     
  
-},
-
-
-
-    
+}
